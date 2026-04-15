@@ -66,10 +66,7 @@ function App() {
             <Popup></Popup>
           </Marker>
         </MapContainer>
-        <div className="panel">
-          {/* aquí van tus filtros */}
-          <h2>Filtros</h2>
-        </div>
+       
       </section>
     </>
   );
