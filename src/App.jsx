@@ -62,9 +62,7 @@ function App() {
         >
           <TileLayer url="https://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}" />
           <HeatmapLayer />
-          <Marker position={position}>
-            <Popup></Popup>
-          </Marker>
+        
         </MapContainer>
        
       </section>
