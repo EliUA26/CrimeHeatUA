@@ -1,0 +1,102 @@
+[
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/15/operativo-por-copa-libertadores-dejo-varios-demorados/",
+        "titulo": "Operativo por Copa Libertadores dejó varios demorados",
+        "datos": {
+            "delito": "intento de ingreso ebrio al estadio",
+            "lugar": "estadio",
+            "barrio": "no especificado",
+            "ciudad": "Asunción"
+        }
+    },
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/14/mra-mujer-habria-intentado-prenderse-fuego-en-la-fiscalia/",
+        "titulo": "MRA: mujer habría intentado prenderse fuego en la Fiscalía",
+        "datos": {
+            "delito": "intento de suicidio",
+            "lugar": "Fiscalía Zonal de Mariano Roque Alonso",
+            "barrio": "",
+            "ciudad": "Mariano Roque Alonso"
+        }
+    },
+    {
+        "url": "https://www.ultimahora.com/el-narcotrafico-y-el-crimen-organizado-en-brasil-son-monstruosos-y-pueden-avasallar-nuestra-frontera",
+        "titulo": "“El narcotráfico y el crimen organizado en Brasil son monstruosos y pueden avasallar nuestra frontera”",
+        "datos": {
+            "delito": "",
+            "lugar": "",
+            "barrio": "",
+            "ciudad": ""
+        }
+    },
+    {
+        "url": "https://www.ultimahora.com/combinan-robotica-con-leyenda-y-logran-clasificar-open-atlanta-2026",
+        "titulo": "Combinan robótica con leyenda y logran clasificar Open Atlanta 2026",
+        "datos": {
+            "delito": "",
+            "lugar": "",
+            "barrio": "",
+            "ciudad": ""
+        }
+    },
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/15/ciudad-del-este-banda-que-robo-celulares-seria-la-misma-que-asesino-a-un-guardia-en-un-asalto/",
+        "titulo": "Ciudad del Este: Banda que robó celulares sería la misma que asesinó a un guardia en un asalto",
+        "datos": {
+            "delito": "robo",
+            "lugar": "esquina de Abay y Pa’i Pérez",
+            "barrio": "centro",
+            "ciudad": "Ciudad del Este"
+        }
+    },
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/14/video-denuncian-a-paraguayo-cubas-por-presunta-violencia-familiar/",
+        "titulo": "Video: denuncian a Paraguayo Cubas por presunta violencia familiar",
+        "datos": {
+            "delito": "violencia familiar",
+            "lugar": "Hotel Armele",
+            "barrio": "",
+            "ciudad": "Asunción"
+        }
+    },
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/14/cae-exconvicto-cuando-huia-con-la-caja-registradora-y-mercaderias-robadas-de-un-local-de-biggie/",
+        "titulo": "Cae exconvicto cuando huía con la caja registradora y mercaderías robadas de un local de  Biggie",
+        "datos": {
+            "delito": "asalto",
+            "lugar": "sucursal de Biggiefue",
+            "barrio": "",
+            "ciudad": ""
+        }
+    },
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/15/una-detenida-y-una-profuga-por-vender-mezcla-de-ketamina-con-marihuana-en-asuncion/",
+        "titulo": "Una detenida y una prófuga por vender peligrosa mezcla de drogas en Asunción",
+        "datos": {
+            "delito": "narcotráfico",
+            "lugar": "Azotey",
+            "barrio": "",
+            "ciudad": ""
+        }
+    },
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/14/mra-esto-explica-el-fiscal-sobre-la-mujer-que-intento-prenderse-fuego/",
+        "titulo": "MRA: esto explica el fiscal sobre la mujer que intentó prenderse fuego",
+        "datos": {
+            "delito": "intento de autoinmolación",
+            "lugar": "Fiscalía Zonal",
+            "barrio": "",
+            "ciudad": "Mariano Roque Alonso"
+        }
+    },
+    {
+        "url": "https://www.abc.com.py/policiales/2026/04/14/en-persecucion-de-pelicula-atrapan-supuesto-maleante-tras-robar-un-auto/",
+        "titulo": "En persecución de película atrapan supuesto maleante tras robar un auto",
+        "datos": {
+            "delito": "robo",
+            "lugar": "comisaría 10",
+            "barrio": "",
+            "ciudad": "capital del país"
+        }
+    }
+]
