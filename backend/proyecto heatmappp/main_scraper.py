@@ -1,93 +1,69 @@
-import time
-import json
-import requests
-import os
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+import psycopg2
+from generar_mapa_db import generar_mapa # Importamos tu función anterior
 
-# --- CONFIGURACIÓN ---
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
-# Palabras clave para filtrar noticias relevantes a inseguridad
-KEYWORDS = ["policiales", "robo", "asalto", "detenido", "cae", "crimen", "hurto", "asesinato", "fiscalia", "investigan", "motochorro"]
+# Configuración de la base de datos
+DB_CONFIG = {
+    "host": "localhost",
+    "database": "crime_heatmap",
+    "user": "admin",
+    "password": "password123",
+    "port": "5432"
+}
 
-def es_noticia_relevante(url):
-    """Verifica si el link contiene palabras relacionadas a delitos"""
-    return any(word in url.lower() for word in KEYWORDS)
-
-def extraer_cuerpo_noticia(url):
+def guardar_en_db(datos_procesados):
+    """Inserta los datos clasificados por la IA en la base de datos PostGIS."""
     try:
-        res = requests.get(url, headers=HEADERS, timeout=10)
-        soup = BeautifulSoup(res.text, 'html.parser')
-        titulo = soup.find('h1').get_text(strip=True) if soup.find('h1') else "Sin título"
-        parrafos = soup.find_all('p')
-        texto_completo = " ".join([p.get_text(strip=True) for p in parrafos])
-        return {"url": url, "titulo": titulo, "texto": texto_completo}
-    except:
-        return None
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
 
-def obtener_links_abc():
-    print("🔎 Buscando en ABC Color...")
-    res = requests.get("https://www.abc.com.py/policiales/", headers=HEADERS)
-    soup = BeautifulSoup(res.text, 'html.parser')
-    links = []
-    
-    for a in soup.find_all('a', href=True):
-        raw_url = a['href'] # Primero capturamos el link del HTML
-        
-        # 1. Limpiamos el link (quitamos la parte de comentarios si existe)
-        clean_url = raw_url.split('#')[0]
-        
-        # 2. Verificamos que sea de la sección policiales y tenga una longitud lógica
-        if '/policiales/' in clean_url and len(clean_url) > 40:
-            # 3. Formamos la URL completa si es relativa
-            full_url = "https://www.abc.com.py" + clean_url if clean_url.startswith('/') else clean_url
-            
-            # 4. Evitamos duplicados en nuestra lista
-            if full_url not in links:
-                links.append(full_url)
-    return links
+        insert_query = """
+        INSERT INTO delitos (tipo_delito, fecha_evento, gravedad, ubicacion_texto, resumen_breve, geom, url_fuente)
+        VALUES (%s, %s, %s, %s, %s, ST_SetSRID(ST_MakePoint(%s, %s), 4326), %s)
+        ON CONFLICT (url_fuente) DO NOTHING; 
+        """
 
-def obtener_links_uh():
-    print("🔎 Buscando en Última Hora...")
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
-    driver.get("https://www.ultimahora.com/policiales")
-    time.sleep(5)
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
-    driver.quit()
-    links = []
-    for a in soup.find_all('a', href=True):
-        url = a['href']
-        # Aquí aplicamos el filtro de palabras clave para ÚH que es más desordenado
-        if 'ultimahora.com/' in url and es_noticia_relevante(url) and len(url) > 40:
-            if url not in links: links.append(url)
-    return links
+        # Nota: PostGIS usa (Longitud, Latitud)
+        cur.execute(insert_query, (
+            datos_procesados['tipo_delito'],
+            datos_procesados['fecha_evento'],
+            datos_procesados['gravedad'],
+            datos_procesados['ubicacion_texto'],
+            datos_procesados['resumen_breve'],
+            datos_procesados['lng'], 
+            datos_procesados['lat'],
+            datos_procesados['url_fuente']
+        ))
+
+        conn.commit()
+        print(f"✅ Guardado con éxito: {datos_procesados['tipo_delito']} en {datos_procesados['ubicacion_texto']}")
+        
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"❌ Error al guardar en DB: {e}")
+
+def ejecutar_flujo_completo():
+    print("--- INICIANDO SCRAPER DE CRIMINALIDAD ASUNCIÓN ---")
+
+    # SIMULACIÓN: Aquí iría tu lógica de BeautifulSoup/Selenium y luego la IA
+    # Supongamos que la IA ya procesó una noticia y te devolvió esto:
+    noticia_ejemplo = {
+        'tipo_delito': 'MOTOCHORRO',
+        'fecha_evento': '2026-04-25',
+        'gravedad': 7,
+        'ubicacion_texto': 'Cerca de Multiplaza',
+        'resumen_breve': 'Asalto violento en parada de bus.',
+        'lat': -25.3167,
+        'lng': -57.5722,
+        'url_fuente': 'https://www.abc.com.py/noticia/12345' 
+    }
+
+    # 1. Guardar en la base de datos
+    guardar_en_db(noticia_ejemplo)
+
+    # 2. Generar el mapa actualizado con los nuevos datos de la DB
+    print("\n--- ACTUALIZANDO MAPA DE CALOR ---")
+    generar_mapa()
 
 if __name__ == "__main__":
-    links_abc = obtener_links_abc()
-    links_uh = obtener_links_uh()
-    
-    # Unimos y filtramos de nuevo por si acaso
-    todos_los_links = [l for l in list(set(links_abc + links_uh)) if es_noticia_relevante(l)]
-    
-    print(f"✅ Encontrados {len(todos_los_links)} links RELEVANTES. Empezando extracción...")
-
-    noticias_finales = []
-    # Procesamos los primeros 15 para una prueba más real
-    for i, link in enumerate(todos_los_links[:15]): 
-        print(f"[{i+1}/{len(todos_los_links[:15])}] Minando: {link}")
-        datos = extraer_cuerpo_noticia(link)
-        if datos and len(datos['texto']) > 100: # Evitar textos vacíos
-            noticias_finales.append(datos)
-        time.sleep(1)
-
-    # Guardado robusto
-    carpeta = 'data'
-    if not os.path.exists(carpeta): os.makedirs(carpeta)
-    
-    with open(os.path.join(carpeta, 'noticias_raw.json'), 'w', encoding='utf-8') as f:
-        json.dump(noticias_finales, f, ensure_ascii=False, indent=4)
-    
-    print(f"\n¡LISTO! Archivo 'data/noticias_raw.json' actualizado con noticias filtradas.")
+    ejecutar_flujo_completo()

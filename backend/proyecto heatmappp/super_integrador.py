@@ -3,82 +3,103 @@ import os
 import pandas as pd
 import folium
 from folium.plugins import HeatMap, MarkerCluster
+import psycopg2
 import requests
 import io
 
+# Configuración de tu DB local (Docker)
+DB_CONFIG = {
+    "host": "localhost",
+    "database": "crime_heatmap",
+    "user": "admin",
+    "password": "password123",
+    "port": "5432"
+}
+
 def integrar_todo():
-    # 1. TUS DATOS (Los que generó tu IA a partir de las noticias)
-    ruta_tus_datos = 'data/noticias_mapeadas.json'
-    
-    # 2. DATOS DEL GRUPO (Link directo al CSV en el GitHub de EliUA26)
+    # URL del repositorio grupal de Eliana
     url_grupo = "https://raw.githubusercontent.com/EliUA26/CrimeHeatUA/main/data/processed_crimes.csv"
-    
     salida_final = 'MAPA_FINAL_ENTREGA.html'
+    
     puntos_totales = []
     
-    # Creamos el mapa base centrado en Paraguay
-    mapa = folium.Map(location=[-25.3007, -57.6359], zoom_start=12, tiles="cartodbpositron")
-    marker_cluster = MarkerCluster().add_to(mapa)
+    # 1. Crear el mapa base centrado en Asunción
+    mapa = folium.Map(location=[-25.2822, -57.6359], zoom_start=13, tiles="cartodbpositron")
+    
+    # Creamos capas separadas para que se puedan apagar y prender
+    capa_calor = folium.FeatureGroup(name="Mapa de Calor (Densidad)")
+    capa_marcadores = MarkerCluster(name="Incidentes Individuales").add_to(mapa)
 
-    print(" INICIANDO INTEGRACIÓN TOTAL PARA LA UNI")
+    print("🚀 INICIANDO INTEGRACIÓN TOTAL - FASE 1")
 
-    # --- PARTE 1: INTEGRAR TUS DATOS PROCESADOS POR IA ---
-    if os.path.exists(ruta_tus_datos):
-        try:
-            with open(ruta_tus_datos, 'r', encoding='utf-8') as f:
-                mis_datos = json.load(f)
-                print(f" Cargando {len(mis_datos)} noticias de tu módulo de IA...")
-                # Nota: Si tus datos ya tienen coordenadas, las sumamos aquí.
-                # Si solo tienen nombres de barrios, este script priorizará los datos del grupo que ya tienen GPS.
-        except Exception as e:
-            print(f" Aviso: No se pudieron leer tus noticias locales: {e}")
+    # --- PARTE 1: OBTENER TUS DATOS DESDE POSTGRESQL (LOCAL) ---
+    print("📡 Conectando a tu base de datos SQL local...")
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
+        query = "SELECT tipo_delito, resumen_breve, ST_Y(geom), ST_X(geom) FROM delitos WHERE geom IS NOT NULL;"
+        cur.execute(query)
+        mis_datos = cur.fetchall()
+        
+        for tipo, resumen, lat, lng in mis_datos:
+            puntos_totales.append([lat, lng])
+            folium.Marker(
+                [lat, lng],
+                popup=f"<b>TUS DATOS (IA):</b> {tipo}<br>{resumen}",
+                icon=folium.Icon(color='blue', icon='robot', prefix='fa')
+            ).add_to(capa_marcadores)
+        
+        print(f"✅ Se integraron {len(mis_datos)} registros de tu base de datos local.")
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"⚠️ Nota: No se pudo conectar a la DB local. ¿Está prendido Docker? ({e})")
 
     # --- PARTE 2: INTEGRAR DATOS DEL REPOSITORIO GRUPAL (GITHUB) ---
-    print(" Intentando conectar con la base de datos del grupo en GitHub...")
+    print("🌐 Conectando con los datos del equipo en GitHub...")
     try:
         res = requests.get(url_grupo)
         if res.status_code == 200:
             df = pd.read_csv(io.StringIO(res.text))
-            print(f" Se integraron {len(df)} puntos del repositorio de Eliana con éxito.")
             
-            # Detectar automáticamente nombres de columnas de coordenadas
+            # Buscamos columnas de latitud y longitud sin importar mayúsculas
             lat_col = next((c for c in df.columns if 'lat' in c.lower()), None)
             lon_col = next((c for c in df.columns if 'lon' in c.lower()), None)
 
             if lat_col and lon_col:
+                conteo_grupo = 0
                 for _, row in df.iterrows():
                     if pd.notnull(row[lat_col]) and pd.notnull(row[lon_col]):
                         lat, lon = row[lat_col], row[lon_col]
                         puntos_totales.append([lat, lon])
                         
-                        # Crear popup con info del delito
                         tipo = row.get('Type', row.get('type', 'Incidente'))
-                        lugar = row.get('Location', row.get('location', 'Paraguay'))
                         
                         folium.Marker(
                             [lat, lon],
-                            popup=f"<b>Delito:</b> {tipo}<br><b>Lugar:</b> {lugar}",
-                            icon=folium.Icon(color='red', icon='warning', prefix='fa')
-                        ).add_to(marker_cluster)
-            else:
-                print(" El archivo de GitHub no tiene columnas de latitud/longitud reconocibles.")
+                            popup=f"<b>GRUPO:</b> {tipo}",
+                            icon=folium.Icon(color='red', icon='users', prefix='fa')
+                        ).add_to(capa_marcadores)
+                        conteo_grupo += 1
+                print(f"✅ Se integraron {conteo_grupo} puntos del CSV grupal.")
         else:
-            print(f" No se encontró el archivo en GitHub (Error {res.status_code}).")
+            print(f"❌ Error al bajar el CSV de GitHub: Código {res.status_code}")
     except Exception as e:
-        print(f" Error de conexión con GitHub: {e}")
+        print(f"❌ Error de conexión con GitHub: {e}")
 
-    # --- PARTE 3: GENERACIÓN DEL MAPA FINAL ---
+    # --- PARTE 3: GENERACIÓN DE CAPA DE CALOR Y GUARDADO ---
     if puntos_totales:
-        # Añadimos la capa de calor basada en todos los puntos encontrados
-        HeatMap(puntos_totales, radius=15, blur=10).add_to(mapa)
+        HeatMap(puntos_totales, radius=15, blur=10).add_to(capa_calor)
+        capa_calor.add_to(mapa)
+        
+        # Añadir control de capas (para que el profe pueda activar/desactivar el calor o los puntos)
+        folium.LayerControl().add_to(mapa)
         
         mapa.save(salida_final)
-        print(f"\n ¡PROYECTO INTEGRADO CON ÉXITO!")
-        print(f" Resultado final: {os.path.abspath(salida_final)}")
-        print(" Abre este archivo en Chrome para tu presentación.")
+        print(f"\n✨ PROYECTO INTEGRADO CON ÉXITO")
+        print(f"📂 Archivo generado: {salida_final}")
     else:
-        print("\n Error: No se encontraron puntos geográficos para graficar.")
-        print("Asegúrate de que el grupo haya subido el CSV correctamente a GitHub.")
+        print("\n❌ Error: No se encontraron puntos para graficar. Revisa la DB y el CSV.")
 
 if __name__ == "__main__":
     integrar_todo()
