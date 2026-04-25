@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    container_name: crime_db
+    restart: always
+    environment:
+      POSTGRES_USER: adminua
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: crime_heatmap
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
