@@ -5,7 +5,7 @@ from generador_mapa import generar_mapa # Importamos tu función anterior
 DB_CONFIG = {
     "host": "localhost",
     "database": "crime_heatmap",
-    "user": "admin",
+    "user": "adminua",
     "password": "password123",
     "port": "5432"
 }
