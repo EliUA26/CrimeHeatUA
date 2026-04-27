@@ -19,7 +19,9 @@ DB_CONFIG = {
 def integrar_todo():
     # URL del repositorio grupal de Eliana
     url_grupo = "https://raw.githubusercontent.com/EliUA26/CrimeHeatUA/main/data/processed_crimes.csv"
-    salida_final = 'MAPA_FINAL_ENTREGA.html'
+    # Usar ruta absoluta basada en la ubicación del script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    salida_final = os.path.join(script_dir, 'MAPA_FINAL_ENTREGA.html')
     
     puntos_totales = []
     

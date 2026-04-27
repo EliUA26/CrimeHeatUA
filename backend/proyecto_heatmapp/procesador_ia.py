@@ -73,8 +73,10 @@ def procesar_con_ia(texto_noticia):
     return None
 
 def principal():
-    entrada = 'data/noticias_raw.json'
-    salida = 'data/noticias_mapeadas.json'
+    # Usar rutas absolutas basadas en la ubicación del script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    entrada = os.path.join(script_dir, '..', 'data', 'noticias_raw.json')
+    salida = os.path.join(script_dir, '..', 'data', 'noticias_mapeadas.json')
 
     if not os.path.exists(entrada):
         print(f"❌ No existe el archivo de entrada: {entrada}")

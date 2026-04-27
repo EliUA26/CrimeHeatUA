@@ -1,102 +1,122 @@
 [
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/15/operativo-por-copa-libertadores-dejo-varios-demorados/",
-        "titulo": "Operativo por Copa Libertadores dejó varios demorados",
-        "datos": {
-            "delito": "intento de ingreso ebrio al estadio",
-            "lugar": "estadio",
-            "barrio": "no especificado",
-            "ciudad": "Asunción"
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/15/operativo-por-copa-libertadores-dejo-varios-demorados/",
+        "tipo_delito": "ROBO",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 3,
+        "ubicacion_texto": "Asunción",
+        "barrio": "",
+        "ciudad": "Asunción",
+        "resumen_breve": "Ocho integrantes de la barra brava de Olimpia fueron detenidos por intentar ingresar ebrios al estadio durante un operativo de seguridad en un encuentro por la Copa Libertadores.",
+        "lat": -25.3172629,
+        "lng": -57.6190998
     },
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/14/mra-mujer-habria-intentado-prenderse-fuego-en-la-fiscalia/",
-        "titulo": "MRA: mujer habría intentado prenderse fuego en la Fiscalía",
-        "datos": {
-            "delito": "intento de suicidio",
-            "lugar": "Fiscalía Zonal de Mariano Roque Alonso",
-            "barrio": "",
-            "ciudad": "Mariano Roque Alonso"
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/14/mra-mujer-habria-intentado-prenderse-fuego-en-la-fiscalia/",
+        "tipo_delito": "ACCIDENTE",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 7,
+        "ubicacion_texto": "Fiscalía Zonal de Mariano Roque Alonso",
+        "barrio": "",
+        "ciudad": "Mariano Roque Alonso",
+        "resumen_breve": "Una mujer de 33 años intentó prenderse fuego en la Fiscalía Zonal mientras se informaba sobre una causa de abuso sexual en niños. Tenía fósforos y un líquido combustible.",
+        "lat": -25.2822,
+        "lng": -57.6359
     },
     {
-        "url": "https://www.ultimahora.com/el-narcotrafico-y-el-crimen-organizado-en-brasil-son-monstruosos-y-pueden-avasallar-nuestra-frontera",
-        "titulo": "“El narcotráfico y el crimen organizado en Brasil son monstruosos y pueden avasallar nuestra frontera”",
-        "datos": {
-            "delito": "",
-            "lugar": "",
-            "barrio": "",
-            "ciudad": ""
-        }
+        "url_fuente": "https://www.ultimahora.com/el-narcotrafico-y-el-crimen-organizado-en-brasil-son-monstruosos-y-pueden-avasallar-nuestra-frontera",
+        "tipo_delito": "",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 1,
+        "ubicacion_texto": "",
+        "barrio": "",
+        "ciudad": "",
+        "resumen_breve": "Gustavo Leite representa al Gobierno de Paraguay en Estados Unidos, destacando la buena relación bilateral.",
+        "lat": -23.3165935,
+        "lng": -58.1693445
     },
     {
-        "url": "https://www.ultimahora.com/combinan-robotica-con-leyenda-y-logran-clasificar-open-atlanta-2026",
-        "titulo": "Combinan robótica con leyenda y logran clasificar Open Atlanta 2026",
-        "datos": {
-            "delito": "",
-            "lugar": "",
-            "barrio": "",
-            "ciudad": ""
-        }
+        "url_fuente": "https://www.ultimahora.com/combinan-robotica-con-leyenda-y-logran-clasificar-open-atlanta-2026",
+        "tipo_delito": "",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 1,
+        "ubicacion_texto": "",
+        "barrio": "",
+        "ciudad": "",
+        "resumen_breve": "Estudiantes del Colegio Cristo Rey desarrollan un proyecto de robótica para clasificar al Open Atlanta 2026, inspirado en la arqueología y mitología paraguaya.",
+        "lat": -23.3165935,
+        "lng": -58.1693445
     },
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/15/ciudad-del-este-banda-que-robo-celulares-seria-la-misma-que-asesino-a-un-guardia-en-un-asalto/",
-        "titulo": "Ciudad del Este: Banda que robó celulares sería la misma que asesinó a un guardia en un asalto",
-        "datos": {
-            "delito": "robo",
-            "lugar": "esquina de Abay y Pa’i Pérez",
-            "barrio": "centro",
-            "ciudad": "Ciudad del Este"
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/15/ciudad-del-este-banda-que-robo-celulares-seria-la-misma-que-asesino-a-un-guardia-en-un-asalto/",
+        "tipo_delito": "ROBO",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 8,
+        "ubicacion_texto": "esquina de Abay y Pa’i Pérez, en el centro de Ciudad del Este",
+        "barrio": "",
+        "ciudad": "Ciudad del Este",
+        "resumen_breve": "Robaron 470 celulares iPhone a carretilleros en una zona comercial, utilizando armas largas.",
+        "lat": -25.2822,
+        "lng": -57.6359
     },
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/14/video-denuncian-a-paraguayo-cubas-por-presunta-violencia-familiar/",
-        "titulo": "Video: denuncian a Paraguayo Cubas por presunta violencia familiar",
-        "datos": {
-            "delito": "violencia familiar",
-            "lugar": "Hotel Armele",
-            "barrio": "",
-            "ciudad": "Asunción"
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/14/video-denuncian-a-paraguayo-cubas-por-presunta-violencia-familiar/",
+        "tipo_delito": "ASALTO",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 7,
+        "ubicacion_texto": "Hotel Armele, centro de Asunción",
+        "barrio": "",
+        "ciudad": "Asunción",
+        "resumen_breve": "Una mujer denunció a su ex pareja, el exsenador Paraguayo Cubas, por agresiones físicas y verbales en un hotel. La víctima fue llevada al hospital debido a marcas y moretones.",
+        "lat": -25.2822,
+        "lng": -57.6359
     },
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/14/cae-exconvicto-cuando-huia-con-la-caja-registradora-y-mercaderias-robadas-de-un-local-de-biggie/",
-        "titulo": "Cae exconvicto cuando huía con la caja registradora y mercaderías robadas de un local de  Biggie",
-        "datos": {
-            "delito": "asalto",
-            "lugar": "sucursal de Biggiefue",
-            "barrio": "",
-            "ciudad": ""
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/14/cae-exconvicto-cuando-huia-con-la-caja-registradora-y-mercaderias-robadas-de-un-local-de-biggie/",
+        "tipo_delito": "ASALTO",
+        "fecha_evento": "2023-12-05",
+        "gravedad": 7,
+        "ubicacion_texto": "Sucursal de Biggiefue",
+        "barrio": "",
+        "ciudad": "",
+        "resumen_breve": "Cándido Gabriel Fretes, un hombre con antecedentes penales, fue detenido por asaltar la sucursal de Biggiefue. Llevaba una mochila con productos robados que incluían carne, chorizos y una botella de whisky. A pesar de sus antecedentes, había sido beneficiado con medidas alternativas a la prisión.",
+        "lat": -25.2822,
+        "lng": -57.6359
     },
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/15/una-detenida-y-una-profuga-por-vender-mezcla-de-ketamina-con-marihuana-en-asuncion/",
-        "titulo": "Una detenida y una prófuga por vender peligrosa mezcla de drogas en Asunción",
-        "datos": {
-            "delito": "narcotráfico",
-            "lugar": "Azotey",
-            "barrio": "",
-            "ciudad": ""
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/15/una-detenida-y-una-profuga-por-vender-mezcla-de-ketamina-con-marihuana-en-asuncion/",
+        "tipo_delito": "ROBO",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 6,
+        "ubicacion_texto": "Azotey",
+        "barrio": "",
+        "ciudad": "",
+        "resumen_breve": "Intervención antidrogas que resultó en la detención de María Agustina Cazal García por su vinculación con la distribución de marihuana, mientras que Giannina Nicole Suárez Mallo tiene orden de captura.",
+        "lat": -23.3145263,
+        "lng": -56.4883184
     },
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/14/mra-esto-explica-el-fiscal-sobre-la-mujer-que-intento-prenderse-fuego/",
-        "titulo": "MRA: esto explica el fiscal sobre la mujer que intentó prenderse fuego",
-        "datos": {
-            "delito": "intento de autoinmolación",
-            "lugar": "Fiscalía Zonal",
-            "barrio": "",
-            "ciudad": "Mariano Roque Alonso"
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/14/mra-esto-explica-el-fiscal-sobre-la-mujer-que-intento-prenderse-fuego/",
+        "tipo_delito": "ACCIDENTE",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 7,
+        "ubicacion_texto": "Fiscalía Zonal de Mariano Roque Alonso",
+        "barrio": "",
+        "ciudad": "Mariano Roque Alonso",
+        "resumen_breve": "Una mujer de 33 años intentó prenderse fuego en la Fiscalía Zonal de Mariano Roque Alonso tras una videollamada relacionada a un caso de presunto abuso sexual.",
+        "lat": -25.2822,
+        "lng": -57.6359
     },
     {
-        "url": "https://www.abc.com.py/policiales/2026/04/14/en-persecucion-de-pelicula-atrapan-supuesto-maleante-tras-robar-un-auto/",
-        "titulo": "En persecución de película atrapan supuesto maleante tras robar un auto",
-        "datos": {
-            "delito": "robo",
-            "lugar": "comisaría 10",
-            "barrio": "",
-            "ciudad": "capital del país"
-        }
+        "url_fuente": "https://www.abc.com.py/policiales/2026/04/14/en-persecucion-de-pelicula-atrapan-supuesto-maleante-tras-robar-un-auto/",
+        "tipo_delito": "ROBO",
+        "fecha_evento": "2026-04-25",
+        "gravedad": 7,
+        "ubicacion_texto": "Asunción",
+        "barrio": "",
+        "ciudad": "Asunción",
+        "resumen_breve": "Se captura a Osmar Daniel Pereira Escurra, un individuo con antecedentes delictivos, al mando de un vehículo robado en Asunción. La policía inició un operativo para recuperar el automóvil denunciado como robado por su propietario.",
+        "lat": -25.3172629,
+        "lng": -57.6190998
     }
 ]

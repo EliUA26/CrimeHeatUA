@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_386f95b054aa0cea721bad9c928f19b1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_386f95b054aa0cea721bad9c928f19b1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_386f95b054aa0cea721bad9c928f19b1 = L.map(
+                "map_386f95b054aa0cea721bad9c928f19b1",
+                {
+                    center: [-25.3007, -57.6359],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_bf2ead58a9c9fef04bc27709197caaeb = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_bf2ead58a9c9fef04bc27709197caaeb.addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var marker_976d485acd858c451c02f2bf79319b1f = L.marker(
+                [-25.2800459, -57.6343814],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_a79a32414bfd061e8de2e111c29eac42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7cf62aa60b9d9f05933c5cb628fe01ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9e779e3e3412006f5e51479f11ddf526 = $(`<div id="html_9e779e3e3412006f5e51479f11ddf526" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ROBO<br><b>Lugar:</b> Asunción</div>`)[0];
+                popup_7cf62aa60b9d9f05933c5cb628fe01ab.setContent(html_9e779e3e3412006f5e51479f11ddf526);
+            
+        
+
+        marker_976d485acd858c451c02f2bf79319b1f.bindPopup(popup_7cf62aa60b9d9f05933c5cb628fe01ab)
+        ;
+
+        
+    
+    
+                marker_976d485acd858c451c02f2bf79319b1f.setIcon(icon_a79a32414bfd061e8de2e111c29eac42);
+            
+    
+            var marker_e1e932247699306ee0340e66ec809791 = L.marker(
+                [-25.2118123, -57.5346458],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_5a58759360e2844beedc75c1d302001b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff0c7e40801a46641e6b1e34f4170733 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4e4ec98d527376953c5ee6b74ff14c25 = $(`<div id="html_4e4ec98d527376953c5ee6b74ff14c25" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ACCIDENTE<br><b>Lugar:</b> Fiscalía Zonal de Mariano Roque Alonso</div>`)[0];
+                popup_ff0c7e40801a46641e6b1e34f4170733.setContent(html_4e4ec98d527376953c5ee6b74ff14c25);
+            
+        
+
+        marker_e1e932247699306ee0340e66ec809791.bindPopup(popup_ff0c7e40801a46641e6b1e34f4170733)
+        ;
+
+        
+    
+    
+                marker_e1e932247699306ee0340e66ec809791.setIcon(icon_5a58759360e2844beedc75c1d302001b);
+            
+    
+            var marker_76935506b5242232569c3f3b6f46b24e = L.marker(
+                [-23.3165935, -58.1693445],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_5231dd8183e57ef2b53b373afeee0d93 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d70f149a250aaed4148dad1bccaf1916 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56d4bf8237b9c13f34e6d5d283ca0c76 = $(`<div id="html_56d4bf8237b9c13f34e6d5d283ca0c76" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> <br><b>Lugar:</b> </div>`)[0];
+                popup_d70f149a250aaed4148dad1bccaf1916.setContent(html_56d4bf8237b9c13f34e6d5d283ca0c76);
+            
+        
+
+        marker_76935506b5242232569c3f3b6f46b24e.bindPopup(popup_d70f149a250aaed4148dad1bccaf1916)
+        ;
+
+        
+    
+    
+                marker_76935506b5242232569c3f3b6f46b24e.setIcon(icon_5231dd8183e57ef2b53b373afeee0d93);
+            
+    
+            var marker_e64b49f61fd26b4de97f0a087cd3553b = L.marker(
+                [-23.3165935, -58.1693445],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_25563746412aa0b4e2452ce980dfd0a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6560827ab9042632dbb0877b76ff742c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7dbdeaadad4285ddb8f9a00f4d25b5cd = $(`<div id="html_7dbdeaadad4285ddb8f9a00f4d25b5cd" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> <br><b>Lugar:</b> </div>`)[0];
+                popup_6560827ab9042632dbb0877b76ff742c.setContent(html_7dbdeaadad4285ddb8f9a00f4d25b5cd);
+            
+        
+
+        marker_e64b49f61fd26b4de97f0a087cd3553b.bindPopup(popup_6560827ab9042632dbb0877b76ff742c)
+        ;
+
+        
+    
+    
+                marker_e64b49f61fd26b4de97f0a087cd3553b.setIcon(icon_25563746412aa0b4e2452ce980dfd0a2);
+            
+    
+            var marker_cf0f002d35fd68f647bad73faff571ff = L.marker(
+                [-25.5169015, -54.6168645],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_f72d0dfb2054731e5412a682fe081c16 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ced80a108600a62d3ea68a5a5923217 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef8ade95bfc2b4aad691a8b70f81c946 = $(`<div id="html_ef8ade95bfc2b4aad691a8b70f81c946" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ROBO<br><b>Lugar:</b> esquina de Abay y Pa’i Pérez, en el centro de Ciudad del Este</div>`)[0];
+                popup_3ced80a108600a62d3ea68a5a5923217.setContent(html_ef8ade95bfc2b4aad691a8b70f81c946);
+            
+        
+
+        marker_cf0f002d35fd68f647bad73faff571ff.bindPopup(popup_3ced80a108600a62d3ea68a5a5923217)
+        ;
+
+        
+    
+    
+                marker_cf0f002d35fd68f647bad73faff571ff.setIcon(icon_f72d0dfb2054731e5412a682fe081c16);
+            
+    
+            var marker_6289d4f0bda2199aadc2fa5cfb5477a7 = L.marker(
+                [-25.2800459, -57.6343814],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_181546ced4596256328f476567dceafb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f9150dc8a1123d5576a4c6d33a2e1490 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d121b4763e98ad06caddc47e5b7b780 = $(`<div id="html_6d121b4763e98ad06caddc47e5b7b780" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ASALTO<br><b>Lugar:</b> Hotel Armele, centro de Asunción</div>`)[0];
+                popup_f9150dc8a1123d5576a4c6d33a2e1490.setContent(html_6d121b4763e98ad06caddc47e5b7b780);
+            
+        
+
+        marker_6289d4f0bda2199aadc2fa5cfb5477a7.bindPopup(popup_f9150dc8a1123d5576a4c6d33a2e1490)
+        ;
+
+        
+    
+    
+                marker_6289d4f0bda2199aadc2fa5cfb5477a7.setIcon(icon_181546ced4596256328f476567dceafb);
+            
+    
+            var marker_ab792e5eeb9c7dfd07c985466de42fb1 = L.marker(
+                [-23.3165935, -58.1693445],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_0e36c43c4af587b589621197e9c14d40 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49a3901454abf5e1547f28ff3c6fc6d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d017fe78be55a1cec019490d8499119d = $(`<div id="html_d017fe78be55a1cec019490d8499119d" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ASALTO<br><b>Lugar:</b> Sucursal de Biggiefue</div>`)[0];
+                popup_49a3901454abf5e1547f28ff3c6fc6d9.setContent(html_d017fe78be55a1cec019490d8499119d);
+            
+        
+
+        marker_ab792e5eeb9c7dfd07c985466de42fb1.bindPopup(popup_49a3901454abf5e1547f28ff3c6fc6d9)
+        ;
+
+        
+    
+    
+                marker_ab792e5eeb9c7dfd07c985466de42fb1.setIcon(icon_0e36c43c4af587b589621197e9c14d40);
+            
+    
+            var marker_18c776d3f807d6653e0828b9ff1ab565 = L.marker(
+                [-23.3165935, -58.1693445],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_00538663737b2112a63e2054a946d7c0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_847faeb72fa7f4b150c560ab928f6b8c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d9a986d1552c902a2d188bc949dcf5ce = $(`<div id="html_d9a986d1552c902a2d188bc949dcf5ce" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ROBO<br><b>Lugar:</b> Azotey</div>`)[0];
+                popup_847faeb72fa7f4b150c560ab928f6b8c.setContent(html_d9a986d1552c902a2d188bc949dcf5ce);
+            
+        
+
+        marker_18c776d3f807d6653e0828b9ff1ab565.bindPopup(popup_847faeb72fa7f4b150c560ab928f6b8c)
+        ;
+
+        
+    
+    
+                marker_18c776d3f807d6653e0828b9ff1ab565.setIcon(icon_00538663737b2112a63e2054a946d7c0);
+            
+    
+            var marker_225f50a5def9adca6dc067e8ae3a4326 = L.marker(
+                [-25.2118123, -57.5346458],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_a68be72f412443729d2736fed35242de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_deb72207fd9d559e9ec693a32fe6f8d0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8ec2977d1af7870fe953589b419abb8 = $(`<div id="html_a8ec2977d1af7870fe953589b419abb8" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ACCIDENTE<br><b>Lugar:</b> Fiscalía Zonal de Mariano Roque Alonso</div>`)[0];
+                popup_deb72207fd9d559e9ec693a32fe6f8d0.setContent(html_a8ec2977d1af7870fe953589b419abb8);
+            
+        
+
+        marker_225f50a5def9adca6dc067e8ae3a4326.bindPopup(popup_deb72207fd9d559e9ec693a32fe6f8d0)
+        ;
+
+        
+    
+    
+                marker_225f50a5def9adca6dc067e8ae3a4326.setIcon(icon_a68be72f412443729d2736fed35242de);
+            
+    
+            var marker_7de1ca753ed3de0738594b6e92ef53ef = L.marker(
+                [-25.2800459, -57.6343814],
+                {
+}
+            ).addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+    
+            var icon_de1c49b185f763514fd4b716ceccab69 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5b25b250f51dda104de5857c8ac83ae6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff5a0cbb44fc777ca11f8e0b3328bf69 = $(`<div id="html_ff5a0cbb44fc777ca11f8e0b3328bf69" style="width: 100.0%; height: 100.0%;"><b>Delito:</b> ROBO<br><b>Lugar:</b> Asunción</div>`)[0];
+                popup_5b25b250f51dda104de5857c8ac83ae6.setContent(html_ff5a0cbb44fc777ca11f8e0b3328bf69);
+            
+        
+
+        marker_7de1ca753ed3de0738594b6e92ef53ef.bindPopup(popup_5b25b250f51dda104de5857c8ac83ae6)
+        ;
+
+        
+    
+    
+                marker_7de1ca753ed3de0738594b6e92ef53ef.setIcon(icon_de1c49b185f763514fd4b716ceccab69);
+            
+    
+            var heat_map_a9e400187502456ee5ced18213d54222 = L.heatLayer(
+                [[-25.2800459, -57.6343814], [-25.2118123, -57.5346458], [-23.3165935, -58.1693445], [-23.3165935, -58.1693445], [-25.5169015, -54.6168645], [-25.2800459, -57.6343814], [-23.3165935, -58.1693445], [-23.3165935, -58.1693445], [-25.2118123, -57.5346458], [-25.2800459, -57.6343814]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 18,
+  "radius": 25,
+  "blur": 15,
+}
+            );
+        
+    
+            heat_map_a9e400187502456ee5ced18213d54222.addTo(map_386f95b054aa0cea721bad9c928f19b1);
+        
+</script>
+</html>
