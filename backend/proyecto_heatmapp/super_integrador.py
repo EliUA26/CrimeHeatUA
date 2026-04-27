@@ -57,38 +57,38 @@ def integrar_todo():
     except Exception as e:
         print(f"⚠️ Nota: No se pudo conectar a la DB local. ¿Está prendido Docker? ({e})")
 
-    # --- PARTE 2: INTEGRAR DATOS DEL REPOSITORIO GRUPAL (GITHUB) ---
-    print("🌐 Conectando con los datos del equipo en GitHub...")
-    try:
-        res = requests.get(url_grupo)
-        if res.status_code == 200:
-            df = pd.read_csv(io.StringIO(res.text))
+    # # --- PARTE 2: INTEGRAR DATOS DEL REPOSITORIO GRUPAL (GITHUB) ---
+    #  print("🌐 Conectando con los datos del equipo en GitHub...")
+    # try:
+    #     res = requests.get(url_grupo)
+    #     if res.status_code == 200:
+    #         df = pd.read_csv(io.StringIO(res.text))
             
-            # Buscamos columnas de latitud y longitud sin importar mayúsculas
-            lat_col = next((c for c in df.columns if 'lat' in c.lower()), None)
-            lon_col = next((c for c in df.columns if 'lon' in c.lower()), None)
+    #         # Buscamos columnas de latitud y longitud sin importar mayúsculas
+    #         lat_col = next((c for c in df.columns if 'lat' in c.lower()), None)
+    #         lon_col = next((c for c in df.columns if 'lon' in c.lower()), None)
 
-            if lat_col and lon_col:
-                conteo_grupo = 0
-                for _, row in df.iterrows():
-                    if pd.notnull(row[lat_col]) and pd.notnull(row[lon_col]):
-                        lat, lon = row[lat_col], row[lon_col]
-                        puntos_totales.append([lat, lon])
+    #         if lat_col and lon_col:
+    #             conteo_grupo = 0
+    #             for _, row in df.iterrows():
+    #                 if pd.notnull(row[lat_col]) and pd.notnull(row[lon_col]):
+    #                     lat, lon = row[lat_col], row[lon_col]
+    #                     puntos_totales.append([lat, lon])
                         
-                        tipo = row.get('Type', row.get('type', 'Incidente'))
+    #                     tipo = row.get('Type', row.get('type', 'Incidente'))
                         
-                        folium.Marker(
-                            [lat, lon],
-                            popup=f"<b>GRUPO:</b> {tipo}",
-                            icon=folium.Icon(color='red', icon='users', prefix='fa')
-                        ).add_to(capa_marcadores)
-                        conteo_grupo += 1
-                print(f"✅ Se integraron {conteo_grupo} puntos del CSV grupal.")
-        else:
-            print(f"❌ Error al bajar el CSV de GitHub: Código {res.status_code}")
-    except Exception as e:
-        print(f"❌ Error de conexión con GitHub: {e}")
-
+    #                     folium.Marker(
+    #                         [lat, lon],
+    #                         popup=f"<b>GRUPO:</b> {tipo}",
+    #                         icon=folium.Icon(color='red', icon='users', prefix='fa')
+    #                     ).add_to(capa_marcadores)
+    #                     conteo_grupo += 1
+    #             print(f"✅ Se integraron {conteo_grupo} puntos del CSV grupal.")
+    #     else:
+    #         print(f"❌ Error al bajar el CSV de GitHub: Código {res.status_code}")
+    # except Exception as e:
+    #     print(f"❌ Error de conexión con GitHub: {e}")
+    
     # --- PARTE 3: GENERACIÓN DE CAPA DE CALOR Y GUARDADO ---
     if puntos_totales:
         HeatMap(puntos_totales, radius=15, blur=10).add_to(capa_calor)
